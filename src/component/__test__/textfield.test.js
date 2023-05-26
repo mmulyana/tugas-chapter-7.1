@@ -10,12 +10,12 @@ describe('test textfield component', () => {
 
   test('textfield should initialize with empty', () => {
     render(<Textfield label='username' value='' placeholder='username here' />)
-    const textfield = screen.getByPlaceholderText( /username here/i )
+    const textfield = screen.getByPlaceholderText(/username here/i)
     expect(textfield.value).toBe('')
   })
 
   test('textfield should have new value', () => {
-    render(<Textfield placeholder='username'/>)
+    render(<Textfield placeholder='username' />)
     const textfield = screen.getByPlaceholderText(/username/i)
 
     fireEvent.change(textfield, { target: { value: 'zenitsu' } })

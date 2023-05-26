@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Textfield from '../component/Textfield'
 import { useDispatch } from 'react-redux'
 import { setName } from '../redux/reducers/user'
+import Button from '../component/button'
 
 export default function Form() {
   const dispatch = useDispatch()
@@ -21,6 +22,11 @@ export default function Form() {
   function handleSubmit(e) {
     e.preventDefault(0)
     dispatch(setName(form.name))
+    handleReset()
+  }
+
+  function handleReset() {
+    setForm({email: '', password: ''})
   }
 
   return (
@@ -32,8 +38,9 @@ export default function Form() {
           onChange={handleChange}
           label='Email'
           alt='email textfield'
-          type='text'
-        />
+          type='email'
+          placeholder='type email here'
+          />
 
         <Textfield
           value={form.password}
@@ -42,7 +49,12 @@ export default function Form() {
           label='Password'
           alt='password textfield'
           type='text'
+          placeholder='type password here'
         />
+
+        <Button onClick={handleSubmit} type='submit'>
+          Click
+        </Button>
       </form>
     </div>
   )
